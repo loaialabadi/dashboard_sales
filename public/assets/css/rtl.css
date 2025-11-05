@@ -1,0 +1,92 @@
+/* ====== RTL FIX for POS Dashboard ====== */
+
+body {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Sidebar */
+.sidebar-default {
+    text-align: right;
+}
+
+.sidebar-default .iq-sidebar-menu .iq-menu li a {
+    justify-content: flex-end;
+}
+
+.sidebar-default .iq-sidebar-menu .iq-menu li a i {
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+/* Navbar */
+.navbar {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Adjust margins and paddings */
+.ml-3, .ml-4, .ml-2 {
+    margin-left: 0 !important;
+    margin-right: 1rem !important;
+}
+
+.mr-3, .mr-4, .mr-2 {
+    margin-right: 0 !important;
+    margin-left: 1rem !important;
+}
+
+/* Cards and tables */
+.card, .table {
+    text-align: right;
+}
+
+th, td {
+    text-align: right !important;
+}
+
+/* Dropdowns and modals */
+.dropdown-menu {
+    text-align: right;
+    right: 0;
+    left: auto;
+}
+
+/* Fix icons direction in menus */
+.iq-sidebar-menu .iq-menu li a svg,
+.iq-sidebar-menu .iq-menu li a i.fa {
+    transform: scaleX(-1);
+}
+
+/* Fix chevron direction */
+.iq-sidebar-menu .iq-menu li a .iq-arrow-right {
+    transform: rotate(180deg);
+}
+
+/* Buttons */
+.btn {
+    direction: rtl;
+}
+
+/* Pagination and filters */
+.pagination {
+    direction: rtl;
+}
+
+/* Fix search bars */
+.form-control {
+    text-align: right;
+}
+
+/* Modals */
+.modal-content {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Fix dashboard widgets */
+.iq-card-icon {
+    float: right;
+    margin-left: 1rem;
+    margin-right: 0;
+}
