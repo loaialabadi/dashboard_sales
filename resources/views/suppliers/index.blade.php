@@ -15,15 +15,15 @@
 
             <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                 <div>
-                    <h4 class="mb-3">{{ __('supplier_list.title') }}</h4>
-                    <p class="mb-0">{{ __('supplier_list.description') }}</p>
+                    <h4 class="mb-3">{{ __('supplier.title') }}</h4>
+                    <p class="mb-0">{{ __('supplier.description') }}</p>
                 </div>
                 <div>
                     <a href="{{ route('suppliers.create') }}" class="btn btn-primary add-list">
-                        <i class="fa-solid fa-plus mr-3"></i>{{ __('supplier_list.add') }}
+                        <i class="fa-solid fa-plus mr-3"></i>{{ __('supplier.add') }}
                     </a>
                     <a href="{{ route('suppliers.index') }}" class="btn btn-danger add-list">
-                        <i class="fa-solid fa-trash mr-3"></i>{{ __('supplier_list.clear') }}
+                        <i class="fa-solid fa-trash mr-3"></i>{{ __('supplier.clear') }}
                     </a>
                 </div>
             </div>
@@ -34,7 +34,7 @@
             <form action="{{ route('suppliers.index') }}" method="get">
                 <div class="d-flex flex-wrap align-items-center justify-content-between">
                     <div class="form-group row">
-                        <label for="row" class="col-sm-3 align-self-center">{{ __('supplier_list.row') }}:</label>
+                        <label for="row" class="col-sm-3 align-self-center">{{ __('supplier.row') }}:</label>
                         <div class="col-sm-9">
                             <select class="form-control" name="row">
                                 <option value="10" @if(request('row') == '10') selected @endif>10</option>
@@ -46,10 +46,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="control-label col-sm-3 align-self-center" for="search">{{ __('supplier_list.search') }}:</label>
+                        <label class="control-label col-sm-3 align-self-center" for="search">{{ __('supplier.search') }}:</label>
                         <div class="col-sm-8">
                             <div class="input-group">
-                                <input type="text" id="search" class="form-control" name="search" placeholder="{{ __('supplier_list.search_placeholder') }}" value="{{ request('search') }}">
+                                <input type="text" id="search" class="form-control" name="search" placeholder="{{ __('supplier.search_placeholder') }}" value="{{ request('search') }}">
                                 <div class="input-group-append">
                                     <button type="submit" class="input-group-text bg-primary">
                                         <i class="fa-solid fa-magnifying-glass font-size-20"></i>
@@ -68,14 +68,14 @@
                 <table class="table mb-0">
                     <thead class="bg-white text-uppercase">
                         <tr class="ligth ligth-data">
-                            <th>{{ __('supplier_list.no') }}</th>
-                            <th>{{ __('supplier_list.photo') }}</th>
-                            <th>@sortablelink('name', __('supplier_list.name'))</th>
-                            <th>@sortablelink('email', __('supplier_list.email'))</th>
-                            <th>@sortablelink('phone', __('supplier_list.phone'))</th>
-                            <th>@sortablelink('shopname', __('supplier_list.shopname'))</th>
-                            <th>@sortablelink('type', __('supplier_list.type'))</th>
-                            <th>{{ __('supplier_list.action') }}</th>
+                            <th>{{ __('supplier.no') }}</th>
+                            <th>{{ __('supplier.photo') }}</th>
+                            <th>@sortablelink('name', __('supplier.name'))</th>
+                            <th>@sortablelink('email', __('supplier.email'))</th>
+                            <th>@sortablelink('phone', __('supplier.phone'))</th>
+                            <th>@sortablelink('shopname', __('supplier.shopname'))</th>
+                            <th>@sortablelink('type', __('supplier.type'))</th>
+                            <th>{{ __('supplier.action') }}</th>
                         </tr>
                     </thead>
                     <tbody class="ligth-body">
@@ -92,16 +92,16 @@
                             <td>{{ $supplier->type }}</td>
                             <td>
                                 <div class="d-flex align-items-center list-action">
-                                    <a class="badge badge-info mr-2" data-toggle="tooltip" data-placement="top" title="{{ __('supplier_list.view') }}" href="{{ route('suppliers.show', $supplier->id) }}">
+                                    <a class="badge badge-info mr-2" data-toggle="tooltip" data-placement="top" title="{{ __('supplier.view') }}" href="{{ route('suppliers.show', $supplier->id) }}">
                                         <i class="ri-eye-line mr-0"></i>
                                     </a>
-                                    <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="{{ __('supplier_list.edit') }}" href="{{ route('suppliers.edit', $supplier->id) }}">
+                                    <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="{{ __('supplier.edit') }}" href="{{ route('suppliers.edit', $supplier->id) }}">
                                         <i class="ri-pencil-line mr-0"></i>
                                     </a>
                                     <form action="{{ route('suppliers.destroy', $supplier->id) }}" method="POST" style="margin-bottom: 5px">
                                         @method('delete')
                                         @csrf
-                                        <button type="submit" class="badge bg-warning mr-2 border-none" onclick="return confirm('{{ __('supplier_list.delete_confirm') }}')" data-toggle="tooltip" data-placement="top" title="{{ __('supplier_list.delete') }}">
+                                        <button type="submit" class="badge bg-warning mr-2 border-none" onclick="return confirm('{{ __('supplier.delete_confirm') }}')" data-toggle="tooltip" data-placement="top" title="{{ __('supplier.delete') }}">
                                             <i class="ri-delete-bin-line mr-0"></i>
                                         </button>
                                     </form>
