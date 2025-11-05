@@ -1,0 +1,20 @@
+/node_modules
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+
+# Laravel Octane
+/.build
+
+# Laravel Vapor
+/.vapor
+
+# IDE helper
+/.idea
+/.vscode
+
+# Composer
+composer.lock
