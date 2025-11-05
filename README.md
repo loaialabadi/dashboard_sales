@@ -1,157 +1,61 @@
-## ✨ Laravel Point of Sale
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-A simple and powerful Point of Sale (POS) management system with invoice generation, built with **Laravel 10** and **MySQL**.
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-![Dashboard](https://user-images.githubusercontent.com/71541409/234483153-38816efd-c261-4585-bb93-28639508f5e3.jpg)
+## About Laravel
 
-## 😎 Features
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- **Point of Sale (POS)**
-- **Order Management**
-  - Pending Orders
-  - Completed Orders
-  - Pending Due Payments
-- **Stock Management**
-- **Product Management**
-  - Products
-  - Categories
-- **Employee Management**
-- **Customer Management**
-- **Supplier Management**
-- **Salary Management**
-  - Advance Salary
-  - Pay Salary
-  - Salary History
-- **Attendance Management**
-- **Role & Permission System**
-- **User Management**
-- **Database Backup**
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-## 🚀 How to Use
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-#### 1. Clone the Repository
-To get started, clone or download the repository:
+## Learning Laravel
 
-```bash
-git clone https://github.com/fajarghifar/laravel-point-of-sale
-```
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-#### 2. Set Up the Project
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-Once you’ve cloned the repository, navigate to the project directory and install dependencies:
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-```bash
-cd laravel-point-of-sale
-composer install
-```
+## Laravel Sponsors
 
-Open the project in your preferred code editor:
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-```bash
-code .
-```
+### Premium Partners
 
-#### 3. Configure the Environment
+- **[Vehikl](https://vehikl.com)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Redberry](https://redberry.international/laravel-development)**
+- **[Active Logic](https://activelogic.com)**
 
-Rename the `.env.example` file to `.env`:
+## Contributing
 
-```bash
-cp .env.example .env
-```
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-Generate the application key:
+## Code of Conduct
 
-```bash
-php artisan key:generate
-```
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-#### 4. Set Faker Locale (Optional)
+## Security Vulnerabilities
 
-To set the Faker locale (for example, to Indonesian), add the following line at the end of your `.env` file:
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-```bash
-FAKER_LOCALE="id_ID"
-```
+## License
 
-#### 5. Set Up the Database
-
-Configure your database credentials in the `.env` file.
-
-#### 6. Seed the Database
-
-Run the following command to migrate and seed the database:
-
-```bash
-php artisan migrate:fresh --seed
-```
-
-**Note**: If you encounter any errors, try rerunning the command.
-
-#### 7. Create Storage Link
-
-Create a symbolic link for storage:
-
-```bash
-php artisan storage:link
-```
-
-#### 8. Start the Server
-
-To run the application locally, start the Laravel development server:
-
-```bash
-php artisan serve
-```
-
-#### 9. Log In
-
-Use the following credentials to log in:
-
-- **Username**: `admin`
-- **Password**: `password`
-
-## 🚀 Configuration
-
-#### 1. Configure Cart Settings
-
-Open the `./config/cart.php` file to configure settings like tax rates, number formats, and more.
-
-For more details, check out the [hardevine/shoppingcart documentation](https://packagist.org/packages/hardevine/shoppingcart).
-
-#### 2. Storage Link
-
-If you haven't already, run this command to create the storage link:
-
-```bash
-php artisan storage:link
-```
-
-#### 3. Start the Server
-
-Run the development server:
-
-```bash
-php artisan serve
-```
-
-#### 4. Log In
-
-Try logging in with:
-
-- **Username**: `admin`
-- **Password**: `password`
-
-## 💡 Contributing
-
-Have suggestions or want to contribute? Here’s how:
-
-- Submit a **Pull Request (PR)**
-- Report issues or request features by creating an **Issue**
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-> Connect with me on [GitHub](https://github.com/fajarghifar) &nbsp;&middot;&nbsp; [YouTube](https://www.youtube.com/@fajarghifar) &nbsp;&middot;&nbsp; [Instagram](https://instagram.com/fajarghifar) &nbsp;&middot;&nbsp; [LinkedIn](https://www.linkedin.com/in/fajarghifar/)
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
