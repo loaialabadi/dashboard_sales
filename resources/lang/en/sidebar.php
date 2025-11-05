@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'logo-title' => 'ONE_OPTICS',
     'dashboard' => 'Dashboard',
     'pos' => 'POS',
     'orders' => 'Orders',

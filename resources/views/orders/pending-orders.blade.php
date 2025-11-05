@@ -1,7 +1,7 @@
 @extends('dashboard.body.main')
 
 @section('container')
-<div class="container-fluid">
+<div class="container-fluid" style="{{ app()->getLocale() == 'ar' ? 'direction: rtl; text-align: right;' : '' }}">
     <div class="row">
         <div class="col-lg-12">
             @if (session()->has('success'))
@@ -12,12 +12,15 @@
                     </button>
                 </div>
             @endif
+
             <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                 <div>
-                    <h4 class="mb-3">Pending Order List</h4>
+                    <h4 class="mb-3">{{ __('orders.pending_order_list') }}</h4>
                 </div>
                 <div>
-                    <a href="{{ route('order.pendingOrders') }}" class="btn btn-danger add-list"><i class="fa-solid fa-trash mr-3"></i>Clear Search</a>
+                    <a href="{{ route('order.pendingOrders') }}" class="btn btn-danger add-list">
+                        <i class="fa-solid fa-trash mr-3"></i>{{ __('orders.clear_search') }}
+                    </a>
                 </div>
             </div>
         </div>
@@ -26,7 +29,7 @@
             <form action="{{ route('order.pendingOrders') }}" method="get">
                 <div class="d-flex flex-wrap align-items-center justify-content-between">
                     <div class="form-group row">
-                        <label for="row" class="col-sm-3 align-self-center">Row:</label>
+                        <label for="row" class="col-sm-3 align-self-center">{{ __('orders.row') }}:</label>
                         <div class="col-sm-9">
                             <select class="form-control" name="row">
                                 <option value="10" @if(request('row') == '10')selected="selected"@endif>10</option>
@@ -38,12 +41,14 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="control-label col-sm-3 align-self-center" for="search">Search:</label>
+                        <label class="control-label col-sm-3 align-self-center" for="search">{{ __('orders.search') }}:</label>
                         <div class="col-sm-8">
                             <div class="input-group">
-                                <input type="text" id="search" class="form-control" name="search" placeholder="Search order" value="{{ request('search') }}">
+                                <input type="text" id="search" class="form-control" name="search" placeholder="{{ __('orders.search') }}" value="{{ request('search') }}">
                                 <div class="input-group-append">
-                                    <button type="submit" class="input-group-text bg-primary"><i class="fa-solid fa-magnifying-glass font-size-20"></i></button>
+                                    <button type="submit" class="input-group-text bg-primary">
+                                        <i class="fa-solid fa-magnifying-glass font-size-20"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -57,20 +62,20 @@
                 <table class="table mb-0">
                     <thead class="bg-white text-uppercase">
                         <tr class="ligth ligth-data">
-                            <th>No.</th>
-                            <th>Invoice No</th>
-                            <th>@sortablelink('customer.name', 'name')</th>
-                            <th>@sortablelink('order_date', 'order date')</th>
-                            <th>Payment</th>
-                            <th>@sortablelink('total')</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th>{{ __('orders.no') }}</th>
+                            <th>{{ __('orders.invoice_no') }}</th>
+                            <th>@sortablelink('customer.name', __('orders.name'))</th>
+                            <th>@sortablelink('order_date', __('orders.order_date'))</th>
+                            <th>{{ __('orders.payment') }}</th>
+                            <th>@sortablelink('total', __('orders.total'))</th>
+                            <th>{{ __('orders.status') }}</th>
+                            <th>{{ __('orders.action') }}</th>
                         </tr>
                     </thead>
                     <tbody class="ligth-body">
                         @foreach ($orders as $order)
                         <tr>
-                            <td>{{ (($orders->currentPage() * 10) - 10) + $loop->iteration  }}</td>
+                            <td>{{ (($orders->currentPage() * 10) - 10) + $loop->iteration }}</td>
                             <td>{{ $order->invoice_no }}</td>
                             <td>{{ $order->customer->name }}</td>
                             <td>{{ $order->order_date }}</td>
@@ -81,8 +86,8 @@
                             </td>
                             <td>
                                 <div class="d-flex align-items-center list-action">
-                                    <a class="btn btn-info mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Details"
-                                        href="{{ route('order.orderDetails', $order->id) }}">Details
+                                    <a class="btn btn-info mr-2" href="{{ route('order.orderDetails', $order->id) }}">
+                                        {{ __('orders.details') }}
                                     </a>
                                 </div>
                             </td>
@@ -94,7 +99,5 @@
             {{ $orders->links() }}
         </div>
     </div>
-    <!-- Page end  -->
 </div>
-
 @endsection

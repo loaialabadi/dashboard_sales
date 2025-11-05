@@ -14,17 +14,16 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Create Employee Attendence</h4>
+                        <h4 class="card-title">{{ __('attendance.create_title') }}</h4>
                     </div>
                 </div>
 
                 <div class="card-body">
                     <form action="{{ route('attendence.store') }}" method="POST">
                     @csrf
-                        <!-- begin: Input Data -->
                         <div class="row align-items-center">
                             <div class="form-group col-md-6">
-                                <label for="datepicker">Date <span class="text-danger">*</span></label>
+                                <label for="datepicker">{{ __('attendance.date') }} <span class="text-danger">*</span></label>
                                 <input id="datepicker" class="form-control @error('date') is-invalid @enderror" name="date" value="{{ old('date') }}" />
                                 @error('date')
                                 <div class="invalid-feedback">
@@ -38,39 +37,30 @@
                                     <table class="table mb-0">
                                         <thead class="bg-white text-uppercase">
                                             <tr class="ligth ligth-data">
-                                                <th>No.</th>
-                                                <th>Employee</th>
-                                                <th class="text-center">Attendence Status</th>
+                                                <th>{{ __('attendance.no') }}</th>
+                                                <th>{{ __('attendance.employee') }}</th>
+                                                <th class="text-center">{{ __('attendance.status') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody class="ligth-body">
                                             @foreach ($employees as $employee)
                                             <tr>
-                                                <th scope="row">{{ $key = $loop->iteration  }}</th>
+                                                <th scope="row">{{ $key = $loop->iteration }}</th>
                                                 <td>{{ $employee->name }}</td>
                                                 <td>
                                                     <input type="hidden" name="employee_id[{{ $key }}]" value="{{ $employee->id }}">
-                                                    <div class="input-group">
-                                                        <div class="input-group justify-content-center">
-                                                            <div class="input-group-text">
-                                                                <div class="custom-radio">
-                                                                    <input type="radio" id="present{{ $key }}" name="status{{ $key }}" class="custom-control-input position-relative" style="height: 20px" value="present">
-                                                                    <label class="custom-control-label" for="present{{ $key }}"> Present </label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="input-group-text mx-2">
-                                                                <div class="custom-radio">
-                                                                    <input type="radio" id="leave{{ $key }}" name="status{{ $key }}" class="custom-control-input position-relative" style="height: 20px" value="leave">
-                                                                    <label class="custom-control-label" for="leave{{ $key }}"> Leave </label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="input-group-text">
-                                                                <div class="custom-radio">
-                                                                    <input type="radio" id="absent{{ $key }}" name="status{{ $key }}" class="custom-control-input position-relative" style="height: 20px" value="absent">
-                                                                    <label class="custom-control-label" for="absent{{ $key }}"> Absent </label>
-                                                                </div>
+                                                    <div class="input-group justify-content-center">
+                                                        @php
+                                                            $statuses = ['present', 'leave', 'absent'];
+                                                        @endphp
+                                                        @foreach ($statuses as $status)
+                                                        <div class="input-group-text {{ $loop->index == 1 ? 'mx-2' : '' }}">
+                                                            <div class="custom-radio">
+                                                                <input type="radio" id="{{ $status }}{{ $key }}" name="status{{ $key }}" class="custom-control-input position-relative" style="height: 20px" value="{{ $status }}">
+                                                                <label class="custom-control-label" for="{{ $status }}{{ $key }}">{{ __('attendance.' . $status) }}</label>
                                                             </div>
                                                         </div>
+                                                        @endforeach
                                                     </div>
                                                 </td>
                                             </tr>
@@ -80,24 +70,22 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- end: Input Data -->
+
                         <div class="mt-2">
-                            <button type="submit" class="btn btn-primary">Save</button>
-                            <a href="{{ route('attendence.index') }}" class="btn btn-danger">Cancel</a>
+                            <button type="submit" class="btn btn-primary">{{ __('attendance.save') }}</button>
+                            <a href="{{ route('attendence.index') }}" class="btn btn-danger">{{ __('attendance.cancel') }}</a>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Page end  -->
 </div>
 
 <script>
     $('#datepicker').datepicker({
         uiLibrary: 'bootstrap4',
         format: 'yyyy-mm-dd'
-        // https://gijgo.com/datetimepicker/configuration/format
     });
 </script>
 @endsection

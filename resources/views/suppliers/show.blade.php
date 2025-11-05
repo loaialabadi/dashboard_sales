@@ -7,7 +7,7 @@
             <div class="card car-transparent">
                 <div class="card-body p-0">
                     <div class="profile-image position-relative">
-                        <img src="{{ asset('assets/images/page-img/profile.png') }}" class="img-fluid rounded h-30 w-100" alt="profile-image">
+                        <img src="{{ asset('assets/images/page-img/profile.png') }}" class="img-fluid rounded h-30 w-100" alt="{{ __('supplier_profile.profile_image') }}">
                     </div>
                 </div>
             </div>
@@ -15,19 +15,19 @@
     </div>
 
     <div class="row px-3">
-        <!-- begin: Left Detail Employee -->
+        <!-- begin: Left Detail Supplier -->
         <div class="col-lg-4 card-profile mb-5 h-50">
             <div class="card card-block card-stretch card-height mb-5">
                 <div class="card-body">
                     <div class="d-flex align-items-center mb-3">
                         <div class="profile-img position-relative">
-                            <img src="{{ $supplier->photo ? asset('storage/suppliers/' . $supplier->photo) : asset('assets/images/user/1.png') }}" class="img-fluid rounded avatar-110" alt="profile-image">
+                            <img src="{{ $supplier->photo ? asset('storage/suppliers/' . $supplier->photo) : asset('assets/images/user/1.png') }}" class="img-fluid rounded avatar-110" alt="{{ __('supplier_profile.profile_image') }}">
                         </div>
                         <div class="ml-3">
                             <h4 class="mb-1">{{ $supplier->name }}</h4>
                             <p class="mb-2">{{ $supplier->shopname }}</p>
-                            <a href="{{ route('suppliers.edit', $supplier->id) }}" class="btn btn-primary font-size-14">Edit</a>
-                            <a href="{{ route('suppliers.index') }}" class="btn btn-danger font-size-14">Back</a>
+                            <a href="{{ route('suppliers.edit', $supplier->id) }}" class="btn btn-primary font-size-14">{{ __('supplier_profile.edit') }}</a>
+                            <a href="{{ route('suppliers.index') }}" class="btn btn-danger font-size-14">{{ __('supplier_profile.back') }}</a>
                         </div>
                     </div>
                     <ul class="list-inline p-0 m-0">
@@ -53,140 +53,62 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
-                                <p class="mb-0">{{ $supplier->city ? $supplier->city : 'Unknown' }}</p>
+                                <p class="mb-0">{{ $supplier->city ?? __('supplier_profile.unknown') }}</p>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <!-- end: Left Detail Employee -->
+        <!-- end: Left Detail Supplier -->
 
-        <!-- begin: Right Detail Employee -->
+        <!-- begin: Right Detail Supplier -->
         <div class="col-lg-8 card-profile">
             <div class="card card-block card-stretch mb-0">
                 <div class="card-header px-3">
                     <div class="header-title">
-                        <h4 class="card-title">Supplier Information</h4>
+                        <h4 class="card-title">{{ __('supplier_profile.information') }}</h4>
                     </div>
                 </div>
                 <div class="card-body p-3">
                     <ul class="list-inline p-0 mb-0">
+                        @php
+                            $fields = [
+                                'name' => $supplier->name,
+                                'email' => $supplier->email,
+                                'phone' => $supplier->phone,
+                                'shopname' => $supplier->shopname,
+                                'type' => $supplier->type,
+                                'account_holder' => $supplier->account_holder,
+                                'bank_name' => $supplier->bank_name,
+                                'account_number' => $supplier->account_number,
+                                'bank_branch' => $supplier->bank_branch,
+                                'city' => $supplier->city,
+                                'address' => $supplier->address,
+                            ];
+                        @endphp
+
+                        @foreach ($fields as $key => $value)
                         <li class="col-lg-12">
                             <div class="form-group row">
                                 <div class="col-sm-3 col-4">
-                                    <label class="col-form-label">Name</label>
+                                    <label class="col-form-label">{{ __('supplier_profile.' . $key) }}</label>
                                 </div>
                                 <div class="col-sm-9 col-8">
-                                    <input type="text" class="form-control bg-white" value="{{ $supplier->name }}" readonly>
+                                    @if($key === 'address')
+                                        <textarea class="form-control bg-white" readonly>{{ $value }}</textarea>
+                                    @else
+                                        <input type="text" class="form-control bg-white" value="{{ $value }}" readonly>
+                                    @endif
                                 </div>
                             </div>
                         </li>
-                        <li class="col-lg-12">
-                            <div class="form-group row">
-                                <div class="col-sm-3 col-4">
-                                    <label class="col-form-label">Email</label>
-                                </div>
-                                <div class="col-sm-9 col-8">
-                                    <input type="text" class="form-control bg-white" value="{{ $supplier->email }}" readonly>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="col-lg-12">
-                            <div class="form-group row">
-                                <div class="col-sm-3 col-4">
-                                    <label class="col-form-label">Phone</label>
-                                </div>
-                                <div class="col-sm-9 col-8">
-                                    <input type="text" class="form-control bg-white" value="{{ $supplier->phone }}" readonly>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="col-lg-12">
-                            <div class="form-group row">
-                                <div class="col-sm-3 col-4">
-                                    <label class="col-form-label">Shop Name</label>
-                                </div>
-                                <div class="col-sm-9 col-8">
-                                    <input type="text" class="form-control bg-white" value="{{ $supplier->shopname }}" readonly>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="col-lg-12">
-                            <div class="form-group row">
-                                <div class="col-sm-3 col-4">
-                                    <label class="col-form-label">Type of Supplier</label>
-                                </div>
-                                <div class="col-sm-9 col-8">
-                                    <input type="text" class="form-control bg-white" value="{{ $supplier->type }}" readonly>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="col-lg-12">
-                            <div class="form-group row">
-                                <div class="col-sm-3 col-4">
-                                    <label class="col-form-label">Account Holder</label>
-                                </div>
-                                <div class="col-sm-9 col-8">
-                                    <input type="text" class="form-control bg-white" value="{{ $supplier->account_holder }}" readonly>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="col-lg-12">
-                            <div class="form-group row">
-                                <div class="col-sm-3 col-4">
-                                    <label class="col-form-label">Bank Name</label>
-                                </div>
-                                <div class="col-sm-9 col-8">
-                                    <input type="text" class="form-control bg-white" value="{{ $supplier->bank_name }}" readonly>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="col-lg-12">
-                            <div class="form-group row">
-                                <div class="col-sm-3 col-4">
-                                    <label class="col-form-label">Account Number</label>
-                                </div>
-                                <div class="col-sm-9 col-8">
-                                    <input type="text" class="form-control bg-white" value="{{ $supplier->account_number }}" readonly>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="col-lg-12">
-                            <div class="form-group row">
-                                <div class="col-sm-3 col-4">
-                                    <label class="col-form-label">Bank Branch</label>
-                                </div>
-                                <div class="col-sm-9 col-8">
-                                    <input type="text" class="form-control bg-white" value="{{ $supplier->bank_branch }}" readonly>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="col-lg-12">
-                            <div class="form-group row">
-                                <div class="col-sm-3 col-4">
-                                    <label class="col-form-label">City</label>
-                                </div>
-                                <div class="col-sm-9 col-8">
-                                    <input type="text" class="form-control bg-white" value="{{ $supplier->city }}" readonly>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="col-lg-12">
-                            <div class="form-group row">
-                                <div class="col-sm-3 col-4">
-                                    <label class="col-form-label">Address</label>
-                                </div>
-                                <div class="col-sm-9 col-8">
-                                    <textarea class="form-control bg-white" readonly>{{ $supplier->address }}</textarea>
-                                </div>
-                            </div>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
         </div>
-        <!-- end: Right Detail Employee -->
+        <!-- end: Right Detail Supplier -->
     </div>
 </div>
 @endsection

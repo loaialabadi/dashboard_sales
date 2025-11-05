@@ -1,7 +1,7 @@
 @extends('dashboard.body.main')
 
 @section('container')
-<div class="container-fluid">
+<div class="container-fluid" style="{{ app()->getLocale() == 'ar' ? 'direction: rtl; text-align: right;' : '' }}">
     <div class="row">
 
         <div class="col-lg-12">

@@ -1,0 +1,21 @@
+<?php
+return [
+    'title' => 'نظام نقاط البيع (POS)',
+    'name' => 'الاسم',
+    'qty' => 'الكمية',
+    'price' => 'السعر',
+    'subtotal' => 'المجموع الجزئي',
+    'action' => 'إجراءات',
+    'submit' => 'تأكيد',
+    'delete' => 'حذف',
+    'quantity' => 'الكمية الكلية',
+    'vat' => 'الضريبة',
+    'total' => 'الإجمالي',
+    'select_customer' => 'اختر العميل',
+    'add_customer' => 'إضافة عميل',
+    'create_invoice' => 'إنشاء فاتورة',
+    'search' => 'بحث',
+    'search_product' => 'ابحث عن منتج',
+    'add' => 'إضافة',
+    'data_not_found' => 'لا توجد بيانات متاحة',
+];

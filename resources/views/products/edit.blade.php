@@ -13,20 +13,24 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Edit Product</h4>
+                        <h4 class="card-title">{{ __('product.edit_product') }}</h4>
                     </div>
                 </div>
 
                 <div class="card-body">
+
                     <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    @method('put')
-                        <!-- begin: Input Image -->
+                        @csrf
+                        @method('put')
+
+                        <!-- ========== Image ============ -->
                         <div class="form-group row align-items-center">
                             <div class="col-md-12">
                                 <div class="profile-img-edit">
                                     <div class="crm-profile-img-edit">
-                                        <img class="crm-profile-pic rounded-circle avatar-100" id="image-preview" src="{{ $product->product_image ? asset('storage/products/'.$product->product_image) : asset('assets/images/product/default.webp') }}" alt="profile-pic">
+                                        <img class="crm-profile-pic rounded-circle avatar-100" id="image-preview" 
+                                            src="{{ $product->product_image ? asset('storage/products/'.$product->product_image) : asset('assets/images/product/default.webp') }}" 
+                                            alt="profile-pic">
                                     </div>
                                 </div>
                             </div>
@@ -35,134 +39,129 @@
                         <div class="row">
                             <div class="input-group mb-4 col-lg-6">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input @error('product_image') is-invalid @enderror" id="image" name="product_image" accept="image/*" onchange="previewImage();">
-                                    <label class="custom-file-label" for="product_image">Choose file</label>
+                                    <input type="file" class="custom-file-input @error('product_image') is-invalid @enderror" 
+                                        id="image" name="product_image" accept="image/*" onchange="previewImage();">
+                                    <label class="custom-file-label" for="product_image">{{ __('product.choose_file') }}</label>
                                 </div>
                                 @error('product_image')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
+                                    <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
-                        <!-- end: Input Image -->
-                        <!-- begin: Input Data -->
-                        <div class=" row align-items-center">
-                            <div class="form-group col-md-12">
-                                <label for="product_name">Product Name <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control @error('product_name') is-invalid @enderror" id="product_name" name="product_name" value="{{ old('product_name', $product->product_name) }}" required>
+
+                        <!-- ========== Data ============ -->
+                        <div class="row align-items-center">
+
+                            {{-- English Name --}}
+                            <div class="form-group col-md-6">
+                                <label for="product_name">{{ __('product.product_name_en') }} <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control @error('product_name') is-invalid @enderror"
+                                    id="product_name" name="product_name"
+                                    value="{{ old('product_name', $product->product_name) }}" required>
                                 @error('product_name')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
+                                    <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
+
+                            {{-- Arabic Name --}}
                             <div class="form-group col-md-6">
-                                <label for="category_id">Category <span class="text-danger">*</span></label>
+                                <label for="product_name_ar">{{ __('product.product_name_ar') }} <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control @error('product_name_ar') is-invalid @enderror"
+                                    id="product_name_ar" name="product_name_ar"
+                                    value="{{ old('product_name_ar', $product->product_name_ar) }}">
+                                @error('product_name_ar')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            {{-- Category --}}
+                            <div class="form-group col-md-6">
+                                <label for="category_id">{{ __('product.category') }} <span class="text-danger">*</span></label>
                                 <select class="form-control" name="category_id" required>
-                                    <option selected="" disabled>-- Select Category --</option>
+                                    <option selected disabled>{{ __('product.select_category') }}</option>
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}" {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                        <option value="{{ $category->id }}" 
+                                            {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
+                                            {{ $category->name }}
+                                        </option>
                                     @endforeach
                                 </select>
-                                @error('category_id')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
                             </div>
+
+                            {{-- Supplier --}}
                             <div class="form-group col-md-6">
-                                <label for="supplier_id">Supplier <span class="text-danger">*</span></label>
+                                <label for="supplier_id">{{ __('product.supplier') }} <span class="text-danger">*</span></label>
                                 <select class="form-control" name="supplier_id" required>
-                                    <option selected="" disabled>-- Select Supplier --</option>
+                                    <option selected disabled>{{ __('product.select_supplier') }}</option>
                                     @foreach ($suppliers as $supplier)
-                                        <option value="{{ $supplier->id }}" {{ old('supplier_id', $product->supplier_id) == $supplier->id ? 'selected' : '' }}>{{ $supplier->name }}</option>
+                                        <option value="{{ $supplier->id }}" 
+                                            {{ old('supplier_id', $product->supplier_id) == $supplier->id ? 'selected' : '' }}>
+                                            {{ $supplier->name }}
+                                        </option>
                                     @endforeach
                                 </select>
-                                @error('supplier_id')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
                             </div>
+
+                            {{-- More --}}
                             <div class="form-group col-md-6">
-                                <label for="product_garage">Product Garage</label>
-                                <input type="text" class="form-control @error('product_garage') is-invalid @enderror" id="product_garage" name="product_garage" value="{{ old('product_garage', $product->product_garage) }}">
-                                @error('product_garage')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                                <label for="product_garage">{{ __('product.product_garage') }}</label>
+                                <input type="text" class="form-control" name="product_garage"
+                                    value="{{ old('product_garage', $product->product_garage) }}">
                             </div>
+
                             <div class="form-group col-md-6">
-                                <label for="product_store">Product Store</label>
-                                <input type="text" class="form-control @error('product_store') is-invalid @enderror" id="product_store" name="product_store" value="{{ old('product_store', $product->product_store) }}">
-                                @error('product_store')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                                <label for="product_store">{{ __('product.product_store') }}</label>
+                                <input type="text" class="form-control" name="product_store"
+                                    value="{{ old('product_store', $product->product_store) }}">
                             </div>
+
                             <div class="form-group col-md-6">
-                                <label for="buying_date">Buying Date</label>
-                                <input id="buying_date" class="form-control @error('buying_date') is-invalid @enderror" name="buying_date" value="{{ old('buying_date', $product->buying_date) }}" />
-                                @error('buying_date')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                                <label for="buying_date">{{ __('product.buying_date') }}</label>
+                                <input id="buying_date" class="form-control" name="buying_date"
+                                    value="{{ old('buying_date', $product->buying_date) }}">
                             </div>
+
                             <div class="form-group col-md-6">
-                                <label for="expire_date">Expire Date</label>
-                                <input id="expire_date" class="form-control @error('expire_date') is-invalid @enderror" name="expire_date" value="{{ old('expire_date', $product->expire_date) }}" />
-                                @error('expire_date')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                                <label for="expire_date">{{ __('product.expire_date') }}</label>
+                                <input id="expire_date" class="form-control" name="expire_date"
+                                    value="{{ old('expire_date', $product->expire_date) }}">
                             </div>
+
                             <div class="form-group col-md-6">
-                                <label for="buying_price">Buying Price <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control @error('buying_price') is-invalid @enderror" id="buying_price" name="buying_price" value="{{ old('buying_price', $product->buying_price) }}" required>
-                                @error('buying_price')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                                <label for="buying_price">{{ __('product.buying_price') }} <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="buying_price"
+                                    value="{{ old('buying_price', $product->buying_price) }}" required>
                             </div>
+
                             <div class="form-group col-md-6">
-                                <label for="selling_price">Selling Price <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control @error('selling_price') is-invalid @enderror" id="selling_price" name="selling_price" value="{{ old('selling_price', $product->selling_price) }}" required>
-                                @error('selling_price')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                                <label for="selling_price">{{ __('product.selling_price') }} <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="selling_price"
+                                    value="{{ old('selling_price', $product->selling_price) }}" required>
                             </div>
+
                         </div>
-                        <!-- end: Input Data -->
+
                         <div class="mt-2">
-                            <button type="submit" class="btn btn-primary mr-2">Save</button>
-                            <a class="btn bg-danger" href="{{ route('products.index') }}">Cancel</a>
+                            <button type="submit" class="btn btn-primary mr-2">{{ __('product.save') }}</button>
+                            <a class="btn bg-danger" href="{{ route('products.index') }}">{{ __('product.cancel') }}</a>
                         </div>
+
                     </form>
+
                 </div>
             </div>
         </div>
     </div>
-    <!-- Page end  -->
 </div>
 
 <script>
     $('#buying_date').datepicker({
         uiLibrary: 'bootstrap4',
         format: 'yyyy-mm-dd'
-        // https://gijgo.com/datetimepicker/configuration/format
     });
     $('#expire_date').datepicker({
         uiLibrary: 'bootstrap4',
         format: 'yyyy-mm-dd'
-        // https://gijgo.com/datetimepicker/configuration/format
     });
 </script>
 

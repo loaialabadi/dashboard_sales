@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'logo-title' => 'ONE_OPTICS',
     'dashboard' => 'لوحة التحكم',
     'pos' => 'نقطة البيع',
     'orders' => 'الطلبات',

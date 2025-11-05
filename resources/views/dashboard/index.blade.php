@@ -13,14 +13,16 @@
             </div>
         @endif
         </div>
+
         <div class="col-lg-4">
             <div class="card card-transparent card-block card-stretch card-height border-none">
                 <div class="card-body p-0 mt-lg-2 mt-0">
-                    <h3 class="mb-3">Hi {{ auth()->user()->name }}, Good Morning</h3>
-                    <p class="mb-0 mr-4">Your dashboard gives you views of key performance or business process.</p>
+                    <h3 class="mb-3">{{ __('dashboard.greeting', ['name' => auth()->user()->name]) }}</h3>
+                    <p class="mb-0 mr-4">{{ __('dashboard.dashboard_info') }}</p>
                 </div>
             </div>
         </div>
+
         <div class="col-lg-8">
             <div class="row">
                 <div class="col-lg-4 col-md-4">
@@ -31,17 +33,17 @@
                                     <img src="../assets/images/product/1.png" class="img-fluid" alt="image">
                                 </div>
                                 <div>
-                                    <p class="mb-2">Total Paid</p>
+                                    <p class="mb-2">{{ __('dashboard.total_paid') }}</p>
                                     <h4>$ {{ $total_paid }}</h4>
                                 </div>
                             </div>
                             <div class="iq-progress-bar mt-2">
-                                <span class="bg-info iq-progress progress-1" data-percent="85">
-                                </span>
+                                <span class="bg-info iq-progress progress-1" data-percent="85"></span>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-4 col-md-4">
                     <div class="card card-block card-stretch card-height">
                         <div class="card-body">
@@ -50,17 +52,17 @@
                                     <img src="../assets/images/product/2.png" class="img-fluid" alt="image">
                                 </div>
                                 <div>
-                                    <p class="mb-2">Total Due</p>
+                                    <p class="mb-2">{{ __('dashboard.total_due') }}</p>
                                     <h4>$ {{ $total_due }}</h4>
                                 </div>
                             </div>
                             <div class="iq-progress-bar mt-2">
-                                <span class="bg-danger iq-progress progress-1" data-percent="70">
-                                </span>
+                                <span class="bg-danger iq-progress progress-1" data-percent="70"></span>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-4 col-md-4">
                     <div class="card card-block card-stretch card-height">
                         <div class="card-body">
@@ -69,36 +71,35 @@
                                     <img src="../assets/images/product/3.png" class="img-fluid" alt="image">
                                 </div>
                                 <div>
-                                    <p class="mb-2">Complete Orders</p>
+                                    <p class="mb-2">{{ __('dashboard.complete_orders') }}</p>
                                     <h4>{{ count($complete_orders) }}</h4>
                                 </div>
                             </div>
                             <div class="iq-progress-bar mt-2">
-                                <span class="bg-success iq-progress progress-1" data-percent="75">
-                                </span>
+                                <span class="bg-success iq-progress progress-1" data-percent="75"></span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Overview Chart -->
         <div class="col-lg-6">
             <div class="card card-block card-stretch card-height">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Overview</h4>
+                        <h4 class="card-title">{{ __('dashboard.overview') }}</h4>
                     </div>
                     <div class="card-header-toolbar d-flex align-items-center">
                         <div class="dropdown">
-                            <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton001"
-                                data-toggle="dropdown">
-                                This Month<i class="ri-arrow-down-s-line ml-1"></i>
+                            <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton001" data-toggle="dropdown">
+                                {{ __('dashboard.this_month') }}<i class="ri-arrow-down-s-line ml-1"></i>
                             </span>
-                            <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                aria-labelledby="dropdownMenuButton001">
-                                <a class="dropdown-item" href="#">Year</a>
-                                <a class="dropdown-item" href="#">Month</a>
-                                <a class="dropdown-item" href="#">Week</a>
+                            <div class="dropdown-menu dropdown-menu-right shadow-none" aria-labelledby="dropdownMenuButton001">
+                                <a class="dropdown-item" href="#">{{ __('dashboard.year') }}</a>
+                                <a class="dropdown-item" href="#">{{ __('dashboard.month') }}</a>
+                                <a class="dropdown-item" href="#">{{ __('dashboard.week') }}</a>
                             </div>
                         </div>
                     </div>
@@ -108,23 +109,23 @@
                 </div>
             </div>
         </div>
+
+        <!-- Revenue vs Cost Chart -->
         <div class="col-lg-6">
             <div class="card card-block card-stretch card-height">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Revenue Vs Cost</h4>
+                        <h4 class="card-title">{{ __('dashboard.revenue_vs_cost') }}</h4>
                     </div>
                     <div class="card-header-toolbar d-flex align-items-center">
                         <div class="dropdown">
-                            <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton002"
-                                data-toggle="dropdown">
-                                This Month<i class="ri-arrow-down-s-line ml-1"></i>
+                            <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton002" data-toggle="dropdown">
+                                {{ __('dashboard.this_month') }}<i class="ri-arrow-down-s-line ml-1"></i>
                             </span>
-                            <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                aria-labelledby="dropdownMenuButton002">
-                                <a class="dropdown-item" href="#">Yearly</a>
-                                <a class="dropdown-item" href="#">Monthly</a>
-                                <a class="dropdown-item" href="#">Weekly</a>
+                            <div class="dropdown-menu dropdown-menu-right shadow-none" aria-labelledby="dropdownMenuButton002">
+                                <a class="dropdown-item" href="#">{{ __('dashboard.year') }}</a>
+                                <a class="dropdown-item" href="#">{{ __('dashboard.month') }}</a>
+                                <a class="dropdown-item" href="#">{{ __('dashboard.week') }}</a>
                             </div>
                         </div>
                     </div>
@@ -135,23 +136,22 @@
             </div>
         </div>
 
+        <!-- Top Products -->
         <div class="col-lg-8">
             <div class="card card-block card-stretch card-height">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Top Products</h4>
+                        <h4 class="card-title">{{ __('dashboard.top_products') }}</h4>
                     </div>
                     <div class="card-header-toolbar d-flex align-items-center">
                         <div class="dropdown">
-                            <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton006"
-                                data-toggle="dropdown">
-                                This Month<i class="ri-arrow-down-s-line ml-1"></i>
+                            <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton006" data-toggle="dropdown">
+                                {{ __('dashboard.this_month') }}<i class="ri-arrow-down-s-line ml-1"></i>
                             </span>
-                            <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                aria-labelledby="dropdownMenuButton006">
-                                <a class="dropdown-item" href="#">Year</a>
-                                <a class="dropdown-item" href="#">Month</a>
-                                <a class="dropdown-item" href="#">Week</a>
+                            <div class="dropdown-menu dropdown-menu-right shadow-none" aria-labelledby="dropdownMenuButton006">
+                                <a class="dropdown-item" href="#">{{ __('dashboard.year') }}</a>
+                                <a class="dropdown-item" href="#">{{ __('dashboard.month') }}</a>
+                                <a class="dropdown-item" href="#">{{ __('dashboard.week') }}</a>
                             </div>
                         </div>
                     </div>
@@ -167,7 +167,7 @@
                                     </div>
                                     <div class="style-text text-left mt-3">
                                         <h5 class="mb-1">{{ $product->product_name }}</h5>
-                                        <p class="mb-0">{{ $product->product_store }} Item</p>
+                                        <p class="mb-0">{{ $product->product_store }} {{ __('dashboard.stock') }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -177,14 +177,16 @@
                 </div>
             </div>
         </div>
+
+        <!-- New Products -->
         <div class="col-lg-4">
             <div class="card card-transparent card-block card-stretch mb-4">
                 <div class="card-header d-flex align-items-center justify-content-between p-0">
                     <div class="header-title">
-                        <h4 class="card-title mb-0">New Products</h4>
+                        <h4 class="card-title mb-0">{{ __('dashboard.new_products') }}</h4>
                     </div>
                     <div class="card-header-toolbar d-flex align-items-center">
-                        <div><a href="#" class="btn btn-primary view-btn font-size-14">View All</a></div>
+                        <div><a href="#" class="btn btn-primary view-btn font-size-14">{{ __('dashboard.view_all') }}</a></div>
                     </div>
                 </div>
             </div>
@@ -197,24 +199,21 @@
                         </div>
                         <div class="style-text text-left">
                             <h5 class="mb-2">{{ $product->product_name }}</h5>
-                            <p class="mb-2">Stock : {{ $product->product_store }}</p>
-                            <p class="mb-0">Price : ${{ $product->selling_price }}</p>
+                            <p class="mb-2">{{ __('dashboard.stock') }} : {{ $product->product_store }}</p>
+                            <p class="mb-0">{{ __('dashboard.price') }} : ${{ $product->selling_price }}</p>
                         </div>
                     </div>
                 </div>
             </div>
             @endforeach
         </div>
+
     </div>
-    <!-- Page end  -->
 </div>
 @endsection
 
 @section('specificpagescripts')
-<!-- Table Treeview JavaScript -->
 <script src="{{ asset('assets/js/table-treeview.js') }}"></script>
-<!-- Chart Custom JavaScript -->
 <script src="{{ asset('assets/js/customizer.js') }}"></script>
-<!-- Chart Custom JavaScript -->
 <script async src="{{ asset('assets/js/chart-custom.js') }}"></script>
 @endsection

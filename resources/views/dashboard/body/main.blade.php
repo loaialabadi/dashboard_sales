@@ -19,6 +19,9 @@
     @if (app()->getLocale() == 'ar')
     <link rel="stylesheet" href="{{ asset('assets/css/rtl.css') }}">
 @endif
+@if(app()->getLocale() == 'ar')
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+@endif
 
 
     <link rel="stylesheet" href="{{ asset('assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css') }}">

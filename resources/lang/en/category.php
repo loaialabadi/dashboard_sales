@@ -1,0 +1,47 @@
+<?php
+
+return [
+    'title' => 'Category List',
+    'description' => 'A Category dashboard lets you easily gather and visualize Category data from optimizing the Category experience, ensuring Category retention.',
+    'create' => 'Create Category',
+    'clear_search' => 'Clear Search',
+    'row' => 'Row',
+    'search' => 'Search',
+    'search_placeholder' => 'Search category',
+    'no' => 'No.',
+    'name' => 'Name',
+    'slug' => 'Slug',
+    'action' => 'Action',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'confirm_delete' => 'Are you sure you want to delete this record?',
+    'not_found' => 'Data not Found.',
+        'list_title'    => 'Category List',
+    'create_title'  => 'Create Category',
+    'edit_title'    => 'Edit Category',
+
+    'name'          => 'Category Name',
+    'slug'          => 'Category Slug',
+
+    'save'          => 'Save',
+    'cancel'        => 'Cancel',
+    'create_btn'    => 'Create Category',
+    'clear_search'  => 'Clear Search',
+    'search'        => 'Search category',
+    'row'           => 'Row',
+    'not_found'     => 'Data not found.',
+        'list_title'    => 'Category List',
+    'create_title'  => 'Create Category',
+    'edit_title'    => 'Edit Category',
+
+    'name'          => 'Category Name',
+    'slug'          => 'Category Slug',
+
+    'save'          => 'Save',
+    'cancel'        => 'Cancel',
+    'create_btn'    => 'Create Category',
+    'clear_search'  => 'Clear Search',
+    'search'        => 'Search category',
+    'row'           => 'Row',
+    'not_found'     => 'Data not found.',
+];
