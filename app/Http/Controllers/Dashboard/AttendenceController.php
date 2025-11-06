@@ -56,16 +56,16 @@ class AttendenceController extends Controller
         // Delete if the date is already created (it is just for updating new attendance). If not it will create new attendance
         Attendence::where('date', $validatedData['date'])->delete();
 
-        for ($i=1; $i <= $countEmployee; $i++) {
-            $status = 'status' . $i;
-            $attend = new Attendence();
+for ($i = 1; $i <= $countEmployee; $i++) {
+    $attend = new Attendence();
+    $attend->date = $validatedData['date'];
+    $attend->employee_id = $request->employee_id[$i] ?? null;
+    $attend->status = $request->input('status'.$i); // ✅ طريقة صحيحة للوصول
+    if($attend->employee_id && $attend->status){ // تأكد من وجود بيانات قبل الحفظ
+        $attend->save();
+    }
+}
 
-            $attend->date = $validatedData['date'];
-            $attend->employee_id = $request->employee_id[$i];
-            $attend->status = $request->$status;
-
-            $attend->save();
-        }
 
         return Redirect::route('attendence.index')->with('success', 'Attendence has been Created!');
     }
