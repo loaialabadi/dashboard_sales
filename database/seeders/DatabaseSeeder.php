@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+use Illuminate\Support\Facades\Hash;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -25,15 +26,17 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         $admin = \App\Models\User::factory()->create([
-            'name' => 'Admin',
-            'username' => 'admin',
-            'email' => 'admin@gmail.com',
+     'name' => 'Admin',
+    'username' => 'admin',
+    'email' => 'admin@gmail.com',
+    'password' => bcrypt('123456789'),
         ]);
 
         $user = \App\Models\User::factory()->create([
-            'name' => 'User',
-            'username' => 'user',
-            'email' => 'user@gmail.com',
+    'name' => 'User',
+    'username' => 'user',
+    'email' => 'user@gmail.com',
+    'password' => Hash::make('123456789'),
         ]);
 
         // Employee::factory(5)->create();

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>POS Dash</title>
+    <title>one optics</title>
 @if(app()->getLocale() == 'ar')
     <link rel="stylesheet" href="{{ asset('assets/css/backend-rtl.css') }}">
 @else
@@ -13,7 +13,7 @@
 
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" />
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo-one.jpg') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/backend-plugin.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/backend.css?v=1.0.0') }}">
     @if (app()->getLocale() == 'ar')
