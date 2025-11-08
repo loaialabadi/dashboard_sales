@@ -52,4 +52,12 @@ class Product extends Model
             return $query->where('product_name', 'like', '%' . $search . '%');
         });
     }
+
+    public function stockTransfers()
+{
+    return $this->belongsToMany(StockTransfer::class, 'stock_transfer_product')
+                ->withPivot('quantity')
+                ->withTimestamps();
+}
+
 }
