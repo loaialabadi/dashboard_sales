@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Role in Permission</h4>
+                        <h4 class="card-title">{{ __('role.role_in_permission') }}</h4>
                     </div>
                 </div>
 
@@ -19,12 +19,11 @@
                     <form action="{{ route('rolePermission.store') }}" method="POST">
                     @csrf
                         <!-- begin: Input Data -->
-                        <div class=" row align-items-center">
-
+                        <div class="row align-items-center">
                             <div class="form-group col-md-6">
-                                <label for="role_id">Role Name <span class="text-danger">*</span></label>
+                                <label for="role_id">{{ __('role.role_name') }} <span class="text-danger">*</span></label>
                                 <select class="form-control @error('role') is-invalid @enderror" id="role_id" name="role_id" required>
-                                    <option selected="" disabled>-- Select Role --</option>
+                                    <option selected disabled>-- {{ __('role.select_role') }} --</option>
                                     @foreach ($roles as $role)
                                         <option value="{{ $role->id }}">{{ $role->name }}</option>
                                     @endforeach
@@ -39,7 +38,7 @@
 
                         <div class="row align-items-center">
                             <div class="form-group col-md-6">
-                                <label for="name">Permission Name <span class="text-danger">*</span></label>
+                                <label for="name">{{ __('role.permission_name') }} <span class="text-danger">*</span></label>
                                 @error('name')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -48,12 +47,11 @@
                             </div>
                         </div>
 
-
                         <div class="row">
                             <div class="form-group col-md-3">
                                 <div class="custom-control custom-checkbox custom-control-inline">
                                     <input type="checkbox" class="custom-control-input" id="check-all">
-                                    <label class="custom-control-label" for="check-all">Check All</label>
+                                    <label class="custom-control-label" for="check-all">{{ __('role.check_all') }}</label>
                                 </div>
                             </div>
                         </div>
@@ -107,8 +105,8 @@
                         @endforeach
                         <!-- end: Input Data -->
                         <div class="mt-2">
-                            <button type="submit" class="btn btn-primary mr-2">Save</button>
-                            <a class="btn bg-danger" href="{{ route('permission.index') }}">Cancel</a>
+                            <button type="submit" class="btn btn-primary mr-2">{{ __('role.save') }}</button>
+                            <a class="btn bg-danger" href="{{ route('permission.index') }}">{{ __('role.cancel') }}</a>
                         </div>
                     </form>
                 </div>
@@ -121,12 +119,11 @@
 <script>
     $('#check-all').click(function() {
         if($(this).is(':checked')) {
-            $('input[type = checkbox]').prop('checked', true);
+            $('input[type=checkbox]').prop('checked', true);
         } else {
-            $('input[type = checkbox]').prop('checked', false);
+            $('input[type=checkbox]').prop('checked', false);
         }
     });
 </script>
-
 
 @endsection

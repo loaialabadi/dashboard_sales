@@ -19,7 +19,9 @@
                     <p class="mb-0">{{ __('permission.description') }}</p>
                 </div>
                 <div>
-                    <a href="{{ route('permission.create') }}" class="btn btn-primary add-list"><i class="fa-solid fa-plus mr-3"></i>{{ __('permission.add_permission') }}</a>
+                    <a href="{{ route('permission.create') }}" class="btn btn-primary add-list">
+                        <i class="fa-solid fa-plus mr-3"></i>{{ __('permission.add_permission') }}
+                    </a>
                 </div>
             </div>
         </div>
@@ -49,7 +51,9 @@
                                         <a class="btn btn-success mr-2" data-toggle="tooltip" data-placement="top" title="{{ __('permission.edit') }}"
                                             href="{{ route('permission.edit', $permission->id) }}"><i class="ri-pencil-line mr-0"></i>
                                         </a>
-                                        <button type="submit" class="btn btn-warning mr-2 border-none" onclick="return confirm('{{ __('permission.delete_confirm') }}')" data-toggle="tooltip" data-placement="top" title="{{ __('permission.delete') }}"><i class="ri-delete-bin-line mr-0"></i></button>
+                                        <button type="submit" class="btn btn-warning mr-2 border-none" onclick="return confirm('{{ __('permission.delete_confirm') }}')" data-toggle="tooltip" data-placement="top" title="{{ __('permission.delete') }}">
+                                            <i class="ri-delete-bin-line mr-0"></i>
+                                        </button>
                                     </div>
                                 </form>
                             </td>

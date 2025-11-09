@@ -3,58 +3,19 @@
 @section('container')
 @php
     $group_names = [
-        [
-            'slug' => 'pos',
-            'name' => 'POS'
-        ],
-        [
-            'slug' => 'employee',
-            'name' => 'Employee'
-        ],
-        [
-            'slug' => 'customer',
-            'name' => 'Customer'
-        ],
-        [
-            'slug' => 'supplier',
-            'name' => 'Supplier'
-        ],
-        [
-            'slug' => 'salary',
-            'name' => 'Salary'
-        ],
-        [
-            'slug' => 'attendence',
-            'name' => 'Attendence'
-        ],
-        [
-            'slug' => 'category',
-            'name' => 'Category'
-        ],
-        [
-            'slug' => 'product',
-            'name' => 'Product'
-        ],
-        [
-            'slug' => 'orders',
-            'name' => 'Orders'
-        ],
-        [
-            'slug' => 'stock',
-            'name' => 'Stock'
-        ],
-        [
-            'slug' => 'roles',
-            'name' => 'Roles'
-        ],
-        [
-            'slug' => 'user',
-            'name' => 'User'
-        ],
-        [
-            'slug' => 'database',
-            'name' => 'Database'
-        ],
+        ['slug' => 'pos', 'name' => __('role.pos')],
+        ['slug' => 'employee', 'name' => __('role.employee')],
+        ['slug' => 'customer', 'name' => __('role.customer')],
+        ['slug' => 'supplier', 'name' => __('role.supplier')],
+        ['slug' => 'salary', 'name' => __('role.salary')],
+        ['slug' => 'attendence', 'name' => __('role.attendence')],
+        ['slug' => 'category', 'name' => __('role.category')],
+        ['slug' => 'product', 'name' => __('role.product')],
+        ['slug' => 'orders', 'name' => __('role.orders')],
+        ['slug' => 'stock', 'name' => __('role.stock')],
+        ['slug' => 'roles', 'name' => __('role.roles')],
+        ['slug' => 'user', 'name' => __('role.user')],
+        ['slug' => 'database', 'name' => __('role.database')],
     ]
 @endphp
 
@@ -64,7 +25,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Create Permission</h4>
+                        <h4 class="card-title">{{ __('role.create_permission') }}</h4>
                     </div>
                 </div>
 
@@ -72,36 +33,32 @@
                     <form action="{{ route('permission.store') }}" method="POST">
                     @csrf
                         <!-- begin: Input Data -->
-                        <div class=" row align-items-center">
+                        <div class="row align-items-center">
                             <div class="form-group col-md-6">
-                                <label for="name">Permission Name <span class="text-danger">*</span></label>
+                                <label for="name">{{ __('role.permission_name') }} <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" required autocomplete="off">
                                 @error('name')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="group_name">Group Name <span class="text-danger">*</span></label>
+                                <label for="group_name">{{ __('role.group_name') }} <span class="text-danger">*</span></label>
                                 <select class="form-control @error('group_name') is-invalid @enderror" name="group_name" required>
-                                    <option selected="" disabled>-- Select Group --</option>
+                                    <option selected="" disabled>-- {{ __('role.select_group') }} --</option>
                                     @foreach ($group_names as $item)
                                         <option value="{{ $item['slug'] }}">{{ $item['name'] }}</option>
                                     @endforeach
                                 </select>
                                 @error('group_name')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
                         <!-- end: Input Data -->
                         <div class="mt-2">
-                            <button type="submit" class="btn btn-primary mr-2">Save</button>
-                            <a class="btn bg-danger" href="{{ route('permission.index') }}">Cancel</a>
+                            <button type="submit" class="btn btn-primary mr-2">{{ __('role.save') }}</button>
+                            <a class="btn bg-danger" href="{{ route('permission.index') }}">{{ __('role.cancel') }}</a>
                         </div>
                     </form>
                 </div>

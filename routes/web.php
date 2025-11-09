@@ -22,21 +22,21 @@ use App\Http\Controllers\Dashboard\BranchController;
 use App\Http\Controllers\Dashboard\StockTransferController;
 
 // ====== BRANCHES ======
-Route::resource('/branches', BranchController::class)->except(['show']);
+// Route::resource('/branches', BranchController::class)->except(['show']);
 
-// ====== STOCK TRANSFERS ======
-// الحالات الخاصة
+// // ====== STOCK TRANSFERS ======
+// // الحالات الخاصة
 
-Route::prefix('transfers')->name('transfers.')->group(function () {
-    Route::get('/', [StockTransferController::class, 'index'])->name('index');
-    Route::get('/create', [StockTransferController::class, 'create'])->name('create');
-    Route::post('/', [StockTransferController::class, 'store'])->name('store');
-    Route::get('/{transfer}/edit', [StockTransferController::class, 'edit'])->name('edit');
-    Route::put('/{transfer}', [StockTransferController::class, 'update'])->name('update');
-    Route::get('/{transfer}', [StockTransferController::class, 'show'])->name('show'); // << مهم
-        Route::post('/accept/{id}', [StockTransferController::class, 'accept'])->name('accept');
-    Route::post('/cancel/{id}', [StockTransferController::class, 'cancel'])->name('cancel');
-});
+// Route::prefix('transfers')->name('transfers.')->group(function () {
+//     Route::get('/', [StockTransferController::class, 'index'])->name('index');
+//     Route::get('/create', [StockTransferController::class, 'create'])->name('create');
+//     Route::post('/', [StockTransferController::class, 'store'])->name('store');
+//     Route::get('/{transfer}/edit', [StockTransferController::class, 'edit'])->name('edit');
+//     Route::put('/{transfer}', [StockTransferController::class, 'update'])->name('update');
+//     Route::get('/{transfer}', [StockTransferController::class, 'show'])->name('show'); // << مهم
+//         Route::post('/accept/{id}', [StockTransferController::class, 'accept'])->name('accept');
+//     Route::post('/cancel/{id}', [StockTransferController::class, 'cancel'])->name('cancel');
+// });
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -161,12 +161,12 @@ Route::middleware(['permission:database.menu'])->group(function () {
     Route::get('/database/backup/delete/{getFileName}', [DatabaseBackupController::class, 'delete'])->name('backup.delete');
 });
 // ====== BRANCHES ======
-Route::middleware(['permission:branch.menu'])->group(function () {
-    Route::resource('/branches', BranchController::class)->except(['show']);
-});
+        Route::middleware(['permission:branches.menu'])->group(function () {
+            Route::resource('/branches', BranchController::class)->except(['show']);
+        });
 
 // ====== STOCK TRANSFERS ======
-Route::middleware(['permission:stock_transfer.menu'])->group(function () {
+Route::middleware(['permission:stock_transfers.menu'])->group(function () {
     Route::prefix('transfers')->name('transfers.')->group(function () {
         Route::get('/', [StockTransferController::class, 'index'])->name('index');
         Route::get('/create', [StockTransferController::class, 'create'])->name('create');
