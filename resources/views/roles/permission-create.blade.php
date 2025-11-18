@@ -16,6 +16,8 @@
         ['slug' => 'roles', 'name' => __('role.roles')],
         ['slug' => 'user', 'name' => __('role.user')],
         ['slug' => 'database', 'name' => __('role.database')],
+        ['slug' => 'transfers', 'name' => __('role.transfers')]
+        
     ]
 @endphp
 
