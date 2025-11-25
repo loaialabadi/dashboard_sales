@@ -27,7 +27,7 @@
                                     <div class="crm-profile-img-edit">
                                         <img class="crm-profile-pic rounded-circle avatar-100" 
                                              id="image-preview" 
-                                             src="{{ asset('assets/images/product/default.webp') }}" 
+                                             src="{{ asset('assets/images/product/vertical-banners-sales-promo.jpg') }}" 
                                              alt="profile-pic">
                                     </div>
                                 </div>

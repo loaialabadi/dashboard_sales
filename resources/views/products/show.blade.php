@@ -56,7 +56,7 @@
                             <div class="profile-img-edit">
                                 <div class="crm-profile-img-edit">
                                     <img class="crm-profile-pic rounded-circle avatar-100" id="image-preview"
-                                         src="{{ $product->product_image ? asset('storage/products/'.$product->product_image) : asset('assets/images/product/default.webp') }}"
+                                         src="{{ $product->product_image ? asset('storage/products/'.$product->product_image) : asset('assets/images/product/vertical-banners-sales-promo.jpg') }}"
                                          alt="profile-pic">
                                 </div>
                             </div>

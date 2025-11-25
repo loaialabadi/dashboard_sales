@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'logo-title' => 'ONE_OPTICS',
+    'logo-title' => 'نظام ERB',
     'dashboard' => 'لوحة التحكم',
     'pos' => 'نقطة البيع',
     'orders' => 'الطلبات',

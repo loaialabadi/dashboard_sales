@@ -117,7 +117,7 @@
 
                             <td>
                                 <img class="avatar-60 rounded"
-                                src="{{ $product->product_image ? asset('storage/products/'.$product->product_image) : asset('assets/images/product/default.webp') }}">
+                                src="{{ $product->product_image ? asset('storage/products/'.$product->product_image) : asset('assets/images/product/vertical-banners-sales-promo.jpg') }}">
                             </td>
 
                             <td>

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'logo-title' => 'ONE_OPTICS',
+    'logo-title' => 'ERP SYSTEM',
     'dashboard' => 'Dashboard',
     'pos' => 'POS',
     'orders' => 'Orders',
